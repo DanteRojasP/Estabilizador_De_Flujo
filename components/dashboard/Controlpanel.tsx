@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import type { ControlConfig } from "@/lib/types";
 
 interface ControlPanelProps {
@@ -57,6 +57,14 @@ export function ControlPanel({ config, maxMm, onSaved }: ControlPanelProps) {
   const [saving, setSaving] = useState(false);
   const [savedAt, setSavedAt] = useState<number | null>(null);
 
+  useEffect(() => {
+    if (!config) return;
+    setSetpoint(config.setpoint);
+    setKp(config.kp);
+    setKi(config.ki);
+    setKd(config.kd);
+  }, [config]);
+
   async function handleSave() {
     setSaving(true);
     try {
@@ -97,8 +105,8 @@ export function ControlPanel({ config, maxMm, onSaved }: ControlPanelProps) {
           max={maxMm}
         />
         <Field label="Kp" value={kp} onChange={setKp} step={0.1} />
-        <Field label="Ki" value={ki} onChange={setKi} step={0.01} disabled hint="aún no usado en firmware" />
-        <Field label="Kd" value={kd} onChange={setKd} step={0.01} disabled hint="aún no usado en firmware" />
+        <Field label="Ki" value={ki} onChange={setKi} step={0.01} hint="corrige el error permanente" />
+        <Field label="Kd" value={kd} onChange={setKd} step={0.01} hint="amortigua el overshoot" />
       </div>
 
       <div className="mt-4 flex items-center gap-3">
