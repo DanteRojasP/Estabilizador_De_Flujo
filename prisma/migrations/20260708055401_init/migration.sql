@@ -1,0 +1,24 @@
+-- CreateTable
+CREATE TABLE "Telemetry" (
+    "id" SERIAL NOT NULL,
+    "distance" DOUBLE PRECISION NOT NULL,
+    "height" DOUBLE PRECISION NOT NULL,
+    "pwm" INTEGER NOT NULL,
+    "error" DOUBLE PRECISION NOT NULL,
+    "wifi" INTEGER NOT NULL,
+    "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+
+    CONSTRAINT "Telemetry_pkey" PRIMARY KEY ("id")
+);
+
+-- CreateTable
+CREATE TABLE "Config" (
+    "id" INTEGER NOT NULL DEFAULT 1,
+    "setpoint" DOUBLE PRECISION NOT NULL,
+    "kp" DOUBLE PRECISION NOT NULL,
+    "ki" DOUBLE PRECISION NOT NULL,
+    "kd" DOUBLE PRECISION NOT NULL,
+    "updatedAt" TIMESTAMP(3) NOT NULL,
+
+    CONSTRAINT "Config_pkey" PRIMARY KEY ("id")
+);

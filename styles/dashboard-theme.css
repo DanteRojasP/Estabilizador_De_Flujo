@@ -1,0 +1,68 @@
+:root {
+  --bg: #0a0f1a;
+  --bg-grid: rgba(148, 163, 184, 0.06);
+  --panel: #101827;
+  --panel-soft: #0d1420;
+  --panel-border: #1e293b;
+
+  --text-primary: #e7ecf5;
+  --text-muted: #8b96ac;
+  --text-dim: #566175;
+
+  --accent-amber: #f5a524;   /* actuador / PWM / bomba */
+  --accent-cyan: #38bdf8;    /* sensor / agua */
+  --accent-green: #34d399;   /* estado ok / en línea */
+  --accent-red: #f87171;     /* alerta / sin señal */
+  --accent-violet: #a78bfa;  /* métodos numéricos / calibración */
+}
+
+body {
+  background-color: var(--bg);
+  background-image:
+    linear-gradient(var(--bg-grid) 1px, transparent 1px),
+    linear-gradient(90deg, var(--bg-grid) 1px, transparent 1px);
+  background-size: 32px 32px;
+  background-attachment: fixed;
+  color: var(--text-primary);
+}
+
+.font-display {
+  font-family: var(--font-display), system-ui, sans-serif;
+}
+
+.font-mono {
+  font-family: var(--font-mono), ui-monospace, monospace;
+}
+
+@keyframes wave-scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-140px);
+  }
+}
+
+.tank-wave {
+  animation: wave-scroll 3.2s linear infinite;
+}
+
+@keyframes pulse-dot {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.35;
+  }
+}
+
+.live-dot {
+  animation: pulse-dot 1.6s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tank-wave,
+  .live-dot {
+    animation: none;
+  }
+}
