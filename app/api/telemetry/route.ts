@@ -1,6 +1,10 @@
 import { prisma } from "@/lib/prisma";
 import { NextResponse } from "next/server";
 
+// Explícito por seguridad — aunque ya usa request.url (lo cual ya fuerza
+// modo dinámico en Next.js), lo dejamos declarado para que quede claro.
+export const dynamic = "force-dynamic";
+
 export async function GET(request: Request) {
 
     try {
@@ -66,7 +70,9 @@ export async function POST(request: Request) {
 
                 error: body.error,
 
-                wifi: body.wifi
+                wifi: body.wifi,
+
+                alarm: body.alarm ?? false
 
             }
 

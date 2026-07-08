@@ -5,6 +5,7 @@ export interface TelemetryPoint {
   pwm: number;
   error: number;
   wifi: number;
+  alarm: boolean;
   createdAt: string;
 }
 

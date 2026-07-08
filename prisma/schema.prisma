@@ -14,6 +14,7 @@ model Telemetry {
   pwm        Int
   error      Float
   wifi       Int
+  alarm      Boolean  @default(false)
   createdAt  DateTime @default(now())
 }
 

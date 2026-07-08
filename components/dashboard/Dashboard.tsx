@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import type { ControlConfig, TelemetryPoint } from "@/lib/types";
 import { TopBar } from "@/components/dashboard/Topbar";
+import { AlarmBanner } from "@/components/dashboard/Alarmbanner";
 import { TankVisual } from "@/components/dashboard/Tankvisual";
 import { StatPanel } from "@/components/dashboard/Statpanel";
 import { LiveChart } from "@/components/dashboard/Livechart";
@@ -83,6 +84,12 @@ export function Dashboard() {
   return (
     <div className="mx-auto max-w-6xl px-6 py-10">
       <TopBar online={online} lastSeenSeconds={lastSeenSeconds} />
+
+      {latest?.alarm && (
+        <div className="mt-6">
+          <AlarmBanner />
+        </div>
+      )}
 
       <div className="mt-8 grid grid-cols-1 gap-6 lg:grid-cols-[280px_1fr]">
         <div
