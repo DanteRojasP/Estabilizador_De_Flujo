@@ -24,5 +24,6 @@ model Config {
   kp         Float
   ki         Float
   kd         Float
+  resetToken Int      @default(0)
   updatedAt  DateTime @updatedAt
 }

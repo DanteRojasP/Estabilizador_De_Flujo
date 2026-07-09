@@ -15,5 +15,6 @@ export interface ControlConfig {
   kp: number;
   ki: number;
   kd: number;
+  resetToken: number;
   updatedAt: string;
 }

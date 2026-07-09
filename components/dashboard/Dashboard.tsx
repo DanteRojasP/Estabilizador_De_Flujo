@@ -87,7 +87,9 @@ export function Dashboard() {
 
       {latest?.alarm && (
         <div className="mt-6">
-          <AlarmBanner />
+          <AlarmBanner
+            onAcknowledged={() => setConfig((c) => (c ? { ...c, resetToken: c.resetToken + 1 } : c))}
+          />
         </div>
       )}
 
